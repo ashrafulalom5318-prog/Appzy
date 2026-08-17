@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Details — Appzy</title>
+    <link rel="icon" type="image/jpeg" href="assets/images/app-logo.jpg">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="grain"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img 
+                    src="assets/images/app-logo.jpg" 
+                    alt="Appzy" 
+                    class="logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <div class="logo-fallback" style="display:none;">A</div>
+                <span class="logo-wordmark">App<span>zy</span></span>
+            </a>
+            <a href="index.html" class="nav-back">
+                <i data-lucide="arrow-left"></i>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <main class="page detail-page">
+
+        <!-- Loader -->
+        <div class="loader-box" id="globalLoader">
+            <div class="spinner"></div>
+            <span>Loading app...</span>
+        </div>
+
+        <!-- Not Found -->
+        <div class="not-found" id="notFound" style="display:none;">
+            <div class="not-found-icon">
+                <i data-lucide="package-x"></i>
+            </div>
+            <h2>App Not Found</h2>
+            <p>This app doesn't exist or was removed.</p>
+            <a href="index.html" class="dl-btn" style="margin-top:24px; text-decoration:none;">
+                <i data-lucide="arrow-left"></i> Go Home
+            </a>
+        </div>
+
+        <!-- App Content -->
+        <div id="appContent" style="display:none;">
+
+            <!-- App Hero -->
+            <div class="app-hero">
+                <img id="appIcon" src="" alt="" class="app-hero-icon"
+                    onerror="this.src='https://api.iconify.design/lucide/package.svg?color=%23555'">
+                <div class="app-hero-info">
+                    <span class="app-cat-chip" id="appCat">App</span>
+                    <h1 id="appName">—</h1>
+                    <p class="app-tagline" id="appTagline">—</p>
+                    <div class="app-hero-meta">
+                        <span><i data-lucide="star"></i> <span id="heroRating">—</span></span>
+                        <span class="dot"></span>
+                        <span><i data-lucide="download"></i> <span id="heroDownloads">0</span></span>
+                        <span class="dot"></span>
+                        <span><i data-lucide="hard-drive"></i> <span id="heroSize">—</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Bar -->
+            <div class="dl-bar">
+                <div class="dl-bar-info">
+                    <span class="dl-version" id="dlVersion">v—</span>
+                    <span class="dl-android" id="dlAndroid">Android —+</span>
+                </div>
+                <button class="dl-btn" id="downloadBtn" onclick="handleDownload()">
+                    <i data-lucide="download"></i>
+                    Download APK
+                </button>
+            </div>
+
+            <!-- Screenshots -->
+            <div class="detail-block" id="screenshotsBlock">
+                <p class="block-label"><i data-lucide="images"></i> Preview</p>
+                <h2 class="block-title">Screenshots</h2>
+                <div class="screenshots-scroll" id="screenshotsScroll"></div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-tile">
+                    <i data-lucide="star"></i>
+                    <span class="stat-val" id="statRating">—</span>
+                    <span class="stat-lbl">Rating</span>
+                </div>
+                <div class="stat-tile">
+                    <i data-lucide="download"></i>
+                    <span class="stat-val" id="statDownloads">0</span>
+                    <span class="stat-lbl">Downloads</span>
+                </div>
+                <div class="stat-tile">
+                    <i data-lucide="hard-drive"></i>
+                    <span class="stat-val" id="statSize">—</span>
+                    <span class="stat-lbl">Size</span>
+                </div>
+                <div class="stat-tile">
+                    <i data-lucide="smartphone"></i>
+                    <span class="stat-val" id="statAndroid">—</span>
+                    <span class="stat-lbl">Min Android</span>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="detail-block">
+                <p class="block-label"><i data-lucide="align-left"></i> About</p>
+                <h2 class="block-title">Description</h2>
+                <div class="info-card">
+                    <p class="desc-text" id="appDesc">—</p>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="detail-block">
+                <p class="block-label"><i data-lucide="sparkles"></i> Highlights</p>
+                <h2 class="block-title">Features</h2>
+                <div class="info-card">
+                    <ul class="feat-list" id="featList"></ul>
+                </div>
+            </div>
+
+            <!-- App Info -->
+            <div class="detail-block">
+                <p class="block-label"><i data-lucide="info"></i> Technical</p>
+                <h2 class="block-title">App Info</h2>
+                <div class="info-card info-table">
+                    <div class="info-row">
+                        <span class="info-key">Version</span>
+                        <span class="info-val" id="infoVersion">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-key">Package</span>
+                        <span class="info-val mono" id="infoPackage">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-key">Category</span>
+                        <span class="info-val" id="infoCategory">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-key">Min Android</span>
+                        <span class="info-val" id="infoMinAndroid">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-key">Updated</span>
+                        <span class="info-val" id="infoUpdated">—</span>
+                    </div>
+                    <div class="info-row" style="border:none;">
+                        <span class="info-key">Released</span>
+                        <span class="info-val" id="infoReleased">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ratings -->
+            <div class="detail-block">
+                <p class="block-label"><i data-lucide="star"></i> Community</p>
+                <h2 class="block-title">Ratings & Reviews</h2>
+                <div class="info-card rating-card">
+
+                    <div class="rating-top">
+                        <div class="rating-score">
+                            <div class="big-score" id="bigScore">0.0</div>
+                            <div class="star-row" id="staticStars"></div>
+                            <div class="rating-count" id="ratingCount">0 ratings</div>
+                        </div>
+                        <div class="rating-sep"></div>
+                        <p class="rating-note">
+                            Rate this app and help others discover great apps on Appzy.
+                        </p>
+                    </div>
+
+                    <div class="rating-input-box">
+                        <p class="rate-label">Tap to rate</p>
+                        <div class="star-input" id="starInput">
+                            <i data-lucide="star" data-val="1"></i>
+                            <i data-lucide="star" data-val="2"></i>
+                            <i data-lucide="star" data-val="3"></i>
+                            <i data-lucide="star" data-val="4"></i>
+                            <i data-lucide="star" data-val="5"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img 
+                    src="assets/images/app-logo.jpg" 
+                    alt="Appzy"
+                    onerror="this.style.display='none'"
+                >
+                <span>Appzy</span>
+            </div>
+            <p>© 2026 Appzy · Made with ♥</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i data-lucide="check-circle"></i>
+        <span id="toastMsg"></span>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="app-detail.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
