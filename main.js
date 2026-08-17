@@ -203,7 +203,7 @@ async function fetchStatic() {
 // ------------------------------------------------
 function mergeApps(staticArr, dynArr) {
     return staticArr
-        .filter(app => app.status === "published")
+        .filter(app => app.status === "published" || app.status === "coming_soon")
         .map(app => {
             const dyn = dynArr.find(d => d.id === app.id) || {
                 id:              app.id,
@@ -304,9 +304,13 @@ function buildAppCard(app, rank = null) {
     const rankEl = rank
         ? `<div class="rank-num">${rank}</div>` : "";
 
+    const comingSoonBadge = app.status === "coming_soon"
+        ? `<div class="cs-badge">Coming Soon</div>` : "";
+
     return `
         <div class="app-card" onclick="goToApp('${app.id}')">
             ${rankEl}
+            ${comingSoonBadge}
             <img
                 src="${app.icon || ''}"
                 alt="${app.name}"
