@@ -122,8 +122,24 @@ function populateDetail(app) {
     }
 
     // Download button state
+        // Download button state
     const dlBtn = document.getElementById("downloadBtn");
-    if (dlBtn && !getDownloadLink(app)) {
+
+    if (app.status === "coming_soon") {
+        dlBtn.disabled = true;
+        dlBtn.innerHTML = `<i data-lucide="clock"></i> Coming Soon`;
+        dlBtn.classList.add("cs-disabled");
+
+        // Show coming soon banner on hero
+        const heroEl = document.querySelector(".app-hero");
+        if (heroEl) {
+            const banner = document.createElement("div");
+            banner.className = "cs-banner";
+            banner.innerHTML = `<i data-lucide="clock"></i> This app is coming soon`;
+            heroEl.parentNode.insertBefore(banner, heroEl.nextSibling);
+            lucide.createIcons();
+        }
+    } else if (!getDownloadLink(app)) {
         dlBtn.disabled = true;
         dlBtn.innerHTML = `<i data-lucide="x-circle"></i> Unavailable`;
     }
