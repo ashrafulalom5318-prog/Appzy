@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appzy — Your Personal App Store</title>
+    <meta name="description" content="Appzy — Download apps directly. No ads. No Play Store redirects.">
+    <link rel="icon" type="image/jpeg" href="assets/images/app-logo.jpg">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="grain"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img 
+                    src="assets/images/app-logo.jpg" 
+                    alt="Appzy" 
+                    class="logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <div class="logo-fallback" style="display:none;">A</div>
+                <span class="logo-wordmark">App<span>zy</span></span>
+            </a>
+            <button class="nav-search-btn" onclick="focusSearch()">
+                <i data-lucide="search"></i>
+                <span>Search apps...</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="zap"></i>
+                Direct Downloads · Zero Ads
+            </div>
+            <h1>Discover Apps<br><span>Worth Installing</span></h1>
+            <p>Handpicked apps. Direct APK. No Play Store. No Nonsense.</p>
+            <div class="search-bar-wrap">
+                <i data-lucide="search"></i>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search apps or categories..."
+                    autocomplete="off"
+                    oninput="handleSearch()"
+                >
+                <button id="searchClearBtn" onclick="clearSearch()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+        </div>
+        <div class="hero-rings">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <main class="page">
+
+        <!-- Global Loader -->
+        <div class="loader-box" id="globalLoader">
+            <div class="spinner"></div>
+            <span>Loading apps...</span>
+        </div>
+
+        <!-- Empty DB State -->
+        <div class="empty-db" id="emptyDb" style="display:none;">
+            <i data-lucide="package-open"></i>
+            <h3>No Apps Yet</h3>
+            <p>Check back soon!</p>
+        </div>
+
+        <!-- Search Results -->
+        <section class="section" id="searchSection" style="display:none;">
+            <div class="section-head">
+                <div>
+                    <p class="section-label">Results</p>
+                    <h2 class="section-title" id="searchTitle">Searching...</h2>
+                </div>
+                <button class="chip-btn" onclick="clearSearch()">
+                    <i data-lucide="x"></i> Clear
+                </button>
+            </div>
+            <div class="app-grid" id="searchGrid"></div>
+            <div class="no-results" id="searchEmpty" style="display:none;">
+                <i data-lucide="search-x"></i>
+                <p>No apps found</p>
+            </div>
+        </section>
+
+        <!-- Main Sections -->
+        <div id="mainSections">
+
+            <!-- Featured -->
+            <section class="section" id="featuredSection" style="display:none;">
+                <div class="section-head">
+                    <div>
+                        <p class="section-label">
+                            <i data-lucide="star"></i> Handpicked
+                        </p>
+                        <h2 class="section-title">Featured</h2>
+                    </div>
+                    <button class="chip-btn" onclick="seeAll('featured')">
+                        See all <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+                <div class="featured-row" id="featuredRow"></div>
+            </section>
+
+            <div class="divider" id="div1" style="display:none;"></div>
+
+            <!-- Popular -->
+            <section class="section" id="popularSection" style="display:none;">
+                <div class="section-head">
+                    <div>
+                        <p class="section-label">
+                            <i data-lucide="trending-up"></i> Trending
+                        </p>
+                        <h2 class="section-title">Popular</h2>
+                    </div>
+                    <button class="chip-btn" onclick="seeAll('popular')">
+                        See all <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+                <div class="app-grid" id="popularGrid"></div>
+            </section>
+
+            <div class="divider" id="div2" style="display:none;"></div>
+
+            <!-- Latest -->
+            <section class="section" id="latestSection" style="display:none;">
+                <div class="section-head">
+                    <div>
+                        <p class="section-label">
+                            <i data-lucide="clock"></i> Just Added
+                        </p>
+                        <h2 class="section-title">Latest</h2>
+                    </div>
+                    <button class="chip-btn" onclick="seeAll('latest')">
+                        See all <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+                <div class="app-grid" id="latestGrid"></div>
+            </section>
+
+            <div class="divider" id="div3" style="display:none;"></div>
+
+            <!-- Categories -->
+            <section class="section" id="categorySection" style="display:none;">
+                <div class="section-head">
+                    <div>
+                        <p class="section-label">
+                            <i data-lucide="grid-3x3"></i> Browse
+                        </p>
+                        <h2 class="section-title">Categories</h2>
+                    </div>
+                </div>
+                <div class="category-grid" id="categoryGrid"></div>
+                <!-- Category Apps -->
+                <div id="categoryAppsBox" style="display:none;">
+                    <div class="category-apps-header">
+                        <button class="back-pill" onclick="closeCategoryApps()">
+                            <i data-lucide="arrow-left"></i>
+                            <span id="activeCatLabel">Category</span>
+                        </button>
+                    </div>
+                    <div class="app-grid" id="categoryAppsGrid"></div>
+                </div>
+            </section>
+
+            <div class="divider" id="div4" style="display:none;"></div>
+
+            <!-- All Apps -->
+            <section class="section" id="allSection" style="display:none;">
+                <div class="section-head">
+                    <div>
+                        <p class="section-label">
+                            <i data-lucide="layout-grid"></i> Complete List
+                        </p>
+                        <h2 class="section-title">All Apps</h2>
+                    </div>
+                    <span class="count-chip" id="totalCount">0 apps</span>
+                </div>
+                <div class="app-grid" id="allGrid"></div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img 
+                    src="assets/images/app-logo.jpg" 
+                    alt="Appzy"
+                    onerror="this.style.display='none'"
+                >
+                <span>Appzy</span>
+            </div>
+            <p>© 2026 Appzy · Made with ♥</p>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i data-lucide="check-circle"></i>
+        <span id="toastMsg"></span>
+    </div>
+
+    <script src="main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
