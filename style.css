@@ -1368,6 +1368,54 @@ h1, h2, h3, h4 {
     color: var(--white-30);
     margin-bottom: 4px;
 }
+/* ------------------------------------------------
+   COMING SOON STATES
+------------------------------------------------ */
+.cs-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--white);
+    color: var(--bg);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: var(--r-full);
+    z-index: 2;
+}
+
+.cs-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-md);
+    color: var(--white-50);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.cs-banner svg {
+    width: 15px;
+    height: 15px;
+    color: var(--gold);
+}
+
+.dl-btn.cs-disabled {
+    background: var(--bg-raised);
+    color: var(--white-30);
+}
+
+.dl-btn.cs-disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--bg-raised);
+}
 
 /* ------------------------------------------------
    RESPONSIVE
