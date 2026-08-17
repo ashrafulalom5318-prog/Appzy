@@ -29,6 +29,29 @@
         "assets\/images\/screenshots\/app_0iwd36et_5.png",
         "assets\/images\/screenshots\/app_0iwd36et_6.png"
       ]
+    },
+    {
+      "id": "app_lwv2qljh",
+      "name": "Mail Guard",
+      "tagline": "AI-powered Gmail cleanup and email organization, built around your privacy and control.",
+      "description": "Mail Guard — Your AI-Powered Email Guardian\nYour inbox shouldn't be buried under promotions, subscriptions, old OTPs, spam, and suspicious emails.\nMail Guard helps you understand and organize your Gmail inbox intelligently. It uses AI-assisted classification to identify different types of emails and recommends what may be worth cleaning — while keeping you in control of every action.\n✨ Smart Email Organization\nMail Guard can help identify:\nImportant and personal emails\nPromotional emails\nSubscription emails\nOld OTP emails\nUnnecessary emails\nSpam\nPotentially suspicious or fraudulent emails\n🤖 AI-Powered Recommendations\nMail Guard doesn't blindly delete emails.\nAI analyzes emails and provides recommendations. You decide what happens next.\nAI recommends. You decide.\n🧹 Safer Cleanup\nReview recommended emails, select what you want to clean, and move them to Gmail Trash.\nAutomatic cleanup is not enabled by default. Future automation features can be enabled according to your preferences and rules.\n🔐 Privacy Comes First\nMail Guard is designed with a privacy-first approach.\nYou choose when to connect your Google account and what permissions to grant. Your Gmail account remains under your control, and sensitive credentials such as AI API keys are never stored inside the Android application.\n🛡️ Stay More Organized\nFrom everyday promotions to old OTPs and suspicious messages, Mail Guard helps bring clarity to a crowded inbox so important emails are easier to find.\n🔗 Google Account\nMail Guard uses Google's authorization system to connect your Gmail account. You can disconnect your account whenever you choose.\nMail Guard is built to make email management smarter — without taking control away from you.\nYour Inbox. Smarter. Cleaner. Under Your Control.",
+      "version": "1.0.0",
+      "size": "7.8",
+      "category": "Security",
+      "package": "com.mailguard.app",
+      "icon": "assets\/images\/icons\/app_lwv2qljh.png",
+      "featured": true,
+      "download_url": "",
+      "release_date": "2026-08-18",
+      "updated_date": "2026-08-18",
+      "min_android": "6.0",
+      "status": "coming_soon",
+      "features": [
+        "Secured",
+        "Organizer",
+        "AI Powered"
+      ],
+      "screenshots": []
     }
   ]
 }
