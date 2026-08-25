@@ -89,11 +89,11 @@
       "package": "com.friindzy",
       "icon": "assets\/images\/icons\/app_qvxa4ltr.png",
       "featured": true,
-      "download_url": "",
+      "download_url": "https:\/\/github.com\/ashrafulalom5318-prog\/Appzy\/releases\/download\/app-files\/app_qvxa4ltr.apk",
       "release_date": "2026-08-25",
       "updated_date": "2026-08-25",
       "min_android": "6.0",
-      "status": "coming_soon",
+      "status": "published",
       "admin_only": true,
       "admin_password": "FriindzyAshyy@",
       "features": [
