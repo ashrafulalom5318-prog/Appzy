@@ -77,6 +77,38 @@
         "assets\/images\/screenshots\/app_w9mbu0dw_4.png",
         "assets\/images\/screenshots\/app_w9mbu0dw_5.png"
       ]
+    },
+    {
+      "id": "app_qvxa4ltr",
+      "name": "Friindzy",
+      "tagline": "SuperFast Friindzy",
+      "description": "An ai powered vibe coding Ai ChatBot power by Gemini Models, Completely Free of course! this ai is only create for my supporter who truly support me, this is a gift from my side to all of you...! keep going on...!",
+      "version": "3.17",
+      "size": "13.64",
+      "category": "Other",
+      "package": "com.friindzy",
+      "icon": "assets\/images\/icons\/app_qvxa4ltr.png",
+      "featured": true,
+      "download_url": "",
+      "release_date": "2026-08-25",
+      "updated_date": "2026-08-25",
+      "min_android": "6.0",
+      "status": "coming_soon",
+      "admin_only": true,
+      "admin_password": "FriindzyAshyy@",
+      "features": [
+        "Super Fast",
+        "Free & Secure",
+        "Production Ready",
+        "Coding Experts"
+      ],
+      "screenshots": [
+        "assets\/images\/screenshots\/app_qvxa4ltr_1.png",
+        "assets\/images\/screenshots\/app_qvxa4ltr_2.png",
+        "assets\/images\/screenshots\/app_qvxa4ltr_3.png",
+        "assets\/images\/screenshots\/app_qvxa4ltr_4.png",
+        "assets\/images\/screenshots\/app_qvxa4ltr_5.png"
+      ]
     }
   ]
 }
