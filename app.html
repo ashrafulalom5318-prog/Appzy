@@ -219,9 +219,30 @@
         <i data-lucide="check-circle"></i>
         <span id="toastMsg"></span>
     </div>
+    
+    <div class="pwd-modal-overlay" id="pwdModal">
+    <div class="pwd-modal-box">
+        <button class="pwd-modal-close" onclick="closePwdModal()">
+            <i data-lucide="x"></i>
+        </button>
+        <div class="pwd-modal-icon">
+            <i data-lucide="lock"></i>
+        </div>
+        <h3>Admin Password Required</h3>
+        <p>This app is protected. Enter the password set by the creator to download.</p>
+        
+        <input type="password" id="pwdInput" placeholder="Enter password..." autocomplete="off">
+        <p class="pwd-error" id="pwdError" style="display:none;">Incorrect Password! Try again.</p>
+        
+        <button class="pwd-submit-btn" onclick="verifyPasswordAndDownload()">
+            <i data-lucide="key-round"></i> Unlock & Download
+        </button>
+    </div>
+    </div>
 
     <script src="main.js"></script>
     <script src="app-detail.js"></script>
     <script>lucide.createIcons();</script>
+
 </body>
 </html>
