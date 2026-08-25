@@ -1,6 +1,6 @@
 /* ================================================
    APPZY — APP-DETAIL.JS
-   App detail page — download + ratings
+   App detail page — download + ratings + password protection
 ================================================ */
 
 let CURRENT_APP    = null;
@@ -74,6 +74,17 @@ function populateDetail(app) {
     setText("heroDownloads", fmtCount(app.download_count));
     setText("heroSize",    app.size ? app.size + " MB" : "—");
 
+    // Admin Only Badge
+    if (app.admin_only) {
+        const heroInfo = document.querySelector(".app-hero-info");
+        if (heroInfo && !document.querySelector(".admin-chip")) {
+            const chip = document.createElement("span");
+            chip.className = "admin-chip";
+            chip.innerHTML = `<i data-lucide="shield-alert"></i> Admin Only`;
+            heroInfo.appendChild(chip);
+        }
+    }
+
     // Download bar
     setText("dlVersion", `v${app.version || "—"}`);
     setText("dlAndroid", `Android ${app.min_android || "—"}+`);
@@ -122,7 +133,6 @@ function populateDetail(app) {
     }
 
     // Download button state
-        // Download button state
     const dlBtn = document.getElementById("downloadBtn");
 
     if (app.status === "coming_soon") {
@@ -130,7 +140,6 @@ function populateDetail(app) {
         dlBtn.innerHTML = `<i data-lucide="clock"></i> Coming Soon`;
         dlBtn.classList.add("cs-disabled");
 
-        // Show coming soon banner on hero
         const heroEl = document.querySelector(".app-hero");
         if (heroEl) {
             const banner = document.createElement("div");
@@ -165,11 +174,24 @@ function refreshRatingUI(app) {
 }
 
 // ------------------------------------------------
-// HANDLE DOWNLOAD
+// HANDLE DOWNLOAD (Password Protected Check)
 // ------------------------------------------------
 async function handleDownload() {
     if (!CURRENT_APP) return;
 
+    // Check if App is Admin Only Protected
+    if (CURRENT_APP.admin_only) {
+        openPwdModal();
+        return;
+    }
+
+    startActualDownload();
+}
+
+// ------------------------------------------------
+// START ACTUAL DOWNLOAD
+// ------------------------------------------------
+async function startActualDownload() {
     const link  = getDownloadLink(CURRENT_APP);
     const dlBtn = document.getElementById("downloadBtn");
 
@@ -184,7 +206,6 @@ async function handleDownload() {
     lucide.createIcons();
 
     try {
-        // Trigger download
         const a  = document.createElement("a");
         a.href   = link;
         a.target = "_blank";
@@ -205,6 +226,47 @@ async function handleDownload() {
             dlBtn.disabled  = false;
             lucide.createIcons();
         }, 2500);
+    }
+}
+
+// ------------------------------------------------
+// PASSWORD MODAL LOGIC
+// ------------------------------------------------
+function openPwdModal() {
+    const modal  = document.getElementById("pwdModal");
+    const pwdInp = document.getElementById("pwdInput");
+    const pwdErr = document.getElementById("pwdError");
+    
+    if (!modal) return;
+    if (pwdInp) pwdInp.value = "";
+    if (pwdErr) pwdErr.style.display = "none";
+
+    modal.classList.add("active");
+    if (pwdInp) pwdInp.focus();
+}
+
+function closePwdModal() {
+    const modal = document.getElementById("pwdModal");
+    if (modal) modal.classList.remove("active");
+}
+
+function verifyPasswordAndDownload() {
+    const pwdInp = document.getElementById("pwdInput");
+    const pwdErr = document.getElementById("pwdError");
+    const userEntered = pwdInp ? pwdInp.value.trim() : "";
+
+    if (!CURRENT_APP) return;
+
+    if (userEntered === CURRENT_APP.admin_password) {
+        closePwdModal();
+        showToast("Access Granted! Starting download...", "success");
+        startActualDownload();
+    } else {
+        if (pwdErr) pwdErr.style.display = "block";
+        if (pwdInp) {
+            pwdInp.classList.add("shake");
+            setTimeout(() => pwdInp.classList.remove("shake"), 500);
+        }
     }
 }
 
@@ -230,7 +292,6 @@ async function incrDownload(appId) {
         entry.download_count = (entry.download_count || 0) + 1;
         await updateDynamic(dynApps);
 
-        // Update UI
         const count = fmtCount(entry.download_count);
         setText("statDownloads",  count);
         setText("heroDownloads",  count);
@@ -308,7 +369,6 @@ async function submitRating(val) {
             dynApps.push(entry);
         }
 
-        // Add rating
         if (!Array.isArray(entry.ratings)) entry.ratings = [];
         entry.ratings.push(val);
         entry.rating_count  = entry.ratings.length;
@@ -318,11 +378,9 @@ async function submitRating(val) {
 
         await updateDynamic(dynApps);
 
-        // Save to localStorage
         ratedList.push(CURRENT_APP.id);
         localStorage.setItem(key, JSON.stringify(ratedList));
 
-        // Update CURRENT_APP
         CURRENT_APP.ratings        = entry.ratings;
         CURRENT_APP.rating_count   = entry.rating_count;
         CURRENT_APP.average_rating = entry.average_rating;
