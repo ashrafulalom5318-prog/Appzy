@@ -1368,6 +1368,7 @@ h1, h2, h3, h4 {
     color: var(--white-30);
     margin-bottom: 4px;
 }
+
 /* ------------------------------------------------
    COMING SOON STATES
 ------------------------------------------------ */
@@ -1415,6 +1416,187 @@ h1, h2, h3, h4 {
     transform: none;
     box-shadow: none;
     background: var(--bg-raised);
+}
+
+/* ------------------------------------------------
+   ADMIN ONLY SYSTEM STYLE (BADGES & MODAL)
+------------------------------------------------ */
+.admin-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f26d6d;
+    background: rgba(242, 109, 109, 0.12);
+    border: 1px solid rgba(242, 109, 109, 0.3);
+    padding: 3px 9px;
+    border-radius: var(--r-full);
+    margin-left: 8px;
+}
+
+.admin-chip svg { 
+    width: 12px; 
+    height: 12px; 
+}
+
+.admin-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(242, 109, 109, 0.95);
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.admin-badge svg { 
+    width: 12px; 
+    height: 12px; 
+}
+
+/* Password Modal */
+.pwd-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s var(--ease);
+}
+
+.pwd-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.pwd-modal-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-xl);
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-lift);
+    animation: fadeUp 0.35s var(--spring) both;
+}
+
+.pwd-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: var(--white-30);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.pwd-modal-close:hover {
+    color: var(--white);
+}
+
+.pwd-modal-icon {
+    width: 54dp;
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    color: var(--white);
+}
+
+.pwd-modal-box h3 {
+    font-size: 19px;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.pwd-modal-box p {
+    font-size: 13px;
+    color: var(--white-50);
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.pwd-modal-box input {
+    width: 100%;
+    padding: 13px 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--r-md);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 12px;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+.pwd-modal-box input:focus {
+    border-color: var(--white-50);
+}
+
+.pwd-error {
+    color: var(--red) !important;
+    font-size: 12px !important;
+    margin-bottom: 12px !important;
+    font-weight: 500;
+}
+
+.pwd-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--white);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--r-md);
+    font-family: var(--font-head);
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.pwd-submit-btn:hover {
+    background: var(--white-90);
+}
+
+.pwd-submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* Shake Animation */
+.shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
 }
 
 /* ------------------------------------------------
