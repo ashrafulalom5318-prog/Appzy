@@ -19,7 +19,7 @@ const CONFIG = {
 // STATE
 // ------------------------------------------------
 let STATE = {
-    apps:        [],   // merged apps
+    apps:        [],   
     rawStatic:   [],
     rawDynamic:  [],
     activecat:   null,
@@ -61,9 +61,9 @@ function getCatIcon(cat) {
 // TOAST
 // ------------------------------------------------
 function showToast(msg, type = "success") {
-    const el   = document.getElementById("toast");
+    const el    = document.getElementById("toast");
     const msgEl = document.getElementById("toastMsg");
-    const icon  = el.querySelector("svg, i");
+    const icon  = el ? el.querySelector("svg, i") : null;
 
     if (!el || !msgEl) return;
 
@@ -237,7 +237,7 @@ function focusSearch() {
 // CLEAR SEARCH
 // ------------------------------------------------
 function clearSearch() {
-    const inp     = document.getElementById("searchInput");
+    const inp      = document.getElementById("searchInput");
     const clearBtn = document.getElementById("searchClearBtn");
 
     if (inp) inp.value = "";
@@ -266,9 +266,9 @@ function handleSearch() {
 
     STATE.searching = true;
 
-    const searchSec  = document.getElementById("searchSection");
-    const mainSecs   = document.getElementById("mainSections");
-    const searchGrid = document.getElementById("searchGrid");
+    const searchSec   = document.getElementById("searchSection");
+    const mainSecs    = document.getElementById("mainSections");
+    const searchGrid  = document.getElementById("searchGrid");
     const searchTitle = document.getElementById("searchTitle");
     const searchEmpty = document.getElementById("searchEmpty");
 
@@ -295,7 +295,7 @@ function handleSearch() {
 }
 
 // ------------------------------------------------
-// BUILD APP CARD
+// BUILD APP CARD (Supports Lock Badge)
 // ------------------------------------------------
 function buildAppCard(app, rank = null) {
     const rating = app.average_rating
@@ -307,10 +307,14 @@ function buildAppCard(app, rank = null) {
     const comingSoonBadge = app.status === "coming_soon"
         ? `<div class="cs-badge">Coming Soon</div>` : "";
 
+    const adminBadge = app.admin_only
+        ? `<div class="admin-badge" title="Password Protected"><i data-lucide="lock"></i></div>` : "";
+
     return `
         <div class="app-card" onclick="goToApp('${app.id}')">
             ${rankEl}
             ${comingSoonBadge}
+            ${adminBadge}
             <img
                 src="${app.icon || ''}"
                 alt="${app.name}"
@@ -381,13 +385,11 @@ function toggleCategory(catName, el) {
     const appsGrid = document.getElementById("categoryAppsGrid");
     const label    = document.getElementById("activeCatLabel");
 
-    // If same category clicked → close
     if (STATE.activecat === catName) {
         closeCategoryApps();
         return;
     }
 
-    // Deactivate all pills
     document.querySelectorAll(".cat-card").forEach(c => c.classList.remove("active"));
     el.classList.add("active");
 
@@ -416,7 +418,7 @@ function closeCategoryApps() {
 }
 
 // ------------------------------------------------
-// SEE ALL (Featured / Popular / Latest)
+// SEE ALL
 // ------------------------------------------------
 function seeAll(type) {
     let apps  = [];
@@ -435,7 +437,6 @@ function seeAll(type) {
         title = "Latest Apps";
     }
 
-    // Replace All Apps section content
     const allSec   = document.getElementById("allSection");
     const allGrid  = document.getElementById("allGrid");
     const allTitle = allSec ? allSec.querySelector(".section-title") : null;
@@ -452,7 +453,7 @@ function seeAll(type) {
 }
 
 // ------------------------------------------------
-// RENDER ALL HOME SECTIONS
+// RENDER HOME SECTIONS
 // ------------------------------------------------
 function renderHome(apps) {
     const loader  = document.getElementById("globalLoader");
@@ -465,11 +466,11 @@ function renderHome(apps) {
         return;
     }
 
-    // ── FEATURED ──
-    const featured    = apps.filter(a => a.featured === true);
-    const featSec     = document.getElementById("featuredSection");
-    const featRow     = document.getElementById("featuredRow");
-    const div1        = document.getElementById("div1");
+    // Featured
+    const featured = apps.filter(a => a.featured === true);
+    const featSec  = document.getElementById("featuredSection");
+    const featRow  = document.getElementById("featuredRow");
+    const div1     = document.getElementById("div1");
 
     if (featured.length > 0 && featSec && featRow) {
         featRow.innerHTML = featured.slice(0, 10).map(buildFeatCard).join("");
@@ -477,13 +478,13 @@ function renderHome(apps) {
         if (div1) div1.style.display = "block";
     }
 
-    // ── POPULAR ──
-    const popular  = [...apps]
+    // Popular
+    const popular = [...apps]
         .sort((a, b) => (b.download_count || 0) - (a.download_count || 0))
         .slice(0, 8);
-    const popSec   = document.getElementById("popularSection");
-    const popGrid  = document.getElementById("popularGrid");
-    const div2     = document.getElementById("div2");
+    const popSec  = document.getElementById("popularSection");
+    const popGrid = document.getElementById("popularGrid");
+    const div2    = document.getElementById("div2");
 
     if (popSec && popGrid) {
         popGrid.innerHTML = popular.map((a, i) => buildAppCard(a, i + 1)).join("");
@@ -491,13 +492,13 @@ function renderHome(apps) {
         if (div2) div2.style.display = "block";
     }
 
-    // ── LATEST ──
-    const latest   = [...apps]
+    // Latest
+    const latest  = [...apps]
         .sort((a, b) => new Date(b.updated_date || 0) - new Date(a.updated_date || 0))
         .slice(0, 8);
-    const latSec   = document.getElementById("latestSection");
-    const latGrid  = document.getElementById("latestGrid");
-    const div3     = document.getElementById("div3");
+    const latSec  = document.getElementById("latestSection");
+    const latGrid = document.getElementById("latestGrid");
+    const div3    = document.getElementById("div3");
 
     if (latSec && latGrid) {
         latGrid.innerHTML = latest.map(buildAppCard).join("");
@@ -505,7 +506,7 @@ function renderHome(apps) {
         if (div3) div3.style.display = "block";
     }
 
-    // ── CATEGORIES ──
+    // Categories
     const catMap = {};
     apps.forEach(a => {
         const c = a.category || "Other";
@@ -525,7 +526,7 @@ function renderHome(apps) {
         if (div4) div4.style.display = "block";
     }
 
-    // ── ALL APPS ──
+    // All Apps
     const allSec  = document.getElementById("allSection");
     const allGrid = document.getElementById("allGrid");
     const countEl = document.getElementById("totalCount");
@@ -543,9 +544,8 @@ function renderHome(apps) {
 // INIT HOME
 // ------------------------------------------------
 async function initHome() {
-    // Only run on home page
     if (!document.getElementById("globalLoader")) return;
-    if (document.getElementById("appContent")) return; // app.html
+    if (document.getElementById("appContent")) return;
 
     const [staticApps, dynApps] = await Promise.all([
         fetchStatic(),
@@ -559,7 +559,4 @@ async function initHome() {
     renderHome(STATE.apps);
 }
 
-// ------------------------------------------------
-// DOMContentLoaded
-// ------------------------------------------------
 document.addEventListener("DOMContentLoaded", initHome);
