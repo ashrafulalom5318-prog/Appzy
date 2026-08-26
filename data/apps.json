@@ -86,6 +86,29 @@
         "assets\/images\/screenshots\/app_qvxa4ltr_4.png",
         "assets\/images\/screenshots\/app_qvxa4ltr_5.png"
       ]
+    },
+    {
+      "id": "app_c782e0f7",
+      "name": "Appzy — Admin",
+      "tagline": "Admin App",
+      "description": "Admin App For Appzy Studio",
+      "version": "1.0",
+      "size": "12.37",
+      "category": "Tools",
+      "package": "com.appzy.admin",
+      "icon": "assets\/images\/icons\/app_c782e0f7.png",
+      "featured": true,
+      "download_url": "",
+      "release_date": "2026-08-26",
+      "updated_date": "2026-08-26",
+      "min_android": "6.0",
+      "status": "coming_soon",
+      "admin_only": true,
+      "admin_password": "Ashyy9395",
+      "features": [],
+      "screenshots": [
+        "assets\/images\/screenshots\/app_c782e0f7_1.png"
+      ]
     }
   ]
 }
