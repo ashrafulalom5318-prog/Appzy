@@ -31,33 +31,6 @@
       ]
     },
     {
-      "id": "app_w9mbu0dw",
-      "name": "Supa Ai",
-      "tagline": "all in one",
-      "description": "Supa Ai — ab artificial intelligence.\nthis is Supa Ai made by ashyy's team for vibe coder only..! it's on the way stay tuned..!",
-      "version": "1.1.0",
-      "size": "14.20",
-      "category": "Utilities",
-      "package": "com.supa.ai",
-      "icon": "assets\/images\/icons\/app_w9mbu0dw.png",
-      "featured": true,
-      "download_url": "",
-      "release_date": "2026-08-21",
-      "updated_date": "2026-08-21",
-      "min_android": "6.0",
-      "status": "published",
-      "admin_only": false,
-      "admin_password": "",
-      "features": [],
-      "screenshots": [
-        "assets\/images\/screenshots\/app_w9mbu0dw_1.png",
-        "assets\/images\/screenshots\/app_w9mbu0dw_2.png",
-        "assets\/images\/screenshots\/app_w9mbu0dw_3.png",
-        "assets\/images\/screenshots\/app_w9mbu0dw_4.png",
-        "assets\/images\/screenshots\/app_w9mbu0dw_5.png"
-      ]
-    },
-    {
       "id": "app_qvxa4ltr",
       "name": "Friindzy",
       "tagline": "SuperFast Friindzy",
