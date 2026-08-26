@@ -45,7 +45,9 @@
       "release_date": "2026-08-21",
       "updated_date": "2026-08-21",
       "min_android": "6.0",
-      "status": "coming_soon",
+      "status": "banned",
+      "admin_only": false,
+      "admin_password": "",
       "features": [],
       "screenshots": [
         "assets\/images\/screenshots\/app_w9mbu0dw_1.png",
