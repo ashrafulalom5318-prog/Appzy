@@ -43,10 +43,10 @@
       "featured": true,
       "download_url": "https:\/\/github.com\/ashrafulalom5318-prog\/Appzy\/releases\/download\/app-files\/app_qvxa4ltr.apk",
       "release_date": "2026-08-25",
-      "updated_date": "2026-08-25",
+      "updated_date": "2026-08-27",
       "min_android": "6.0",
       "status": "published",
-      "admin_only": true,
+      "admin_only": false,
       "admin_password": "FriindzyAshyy@",
       "features": [
         "Super Fast",
