@@ -105,6 +105,33 @@
       "admin_password": "Ashyy9395@",
       "features": [],
       "screenshots": []
+    },
+    {
+      "id": "app_e7ed077c",
+      "name": "Friindzy",
+      "tagline": "Your AI friend for coding, ideas, answers, and everyday tasks.",
+      "description": "Meet Friindzy — your AI friend for coding, creativity, learning, and everyday tasks.\n\nWhether you're building an app, debugging code, exploring an idea, searching for information, or simply looking for a quick answer, Friindzy is designed to keep the conversation simple and useful.\n\nBUILT FOR VIBE CODERS\n\nTurn your ideas into working projects faster. Ask for code, understand errors, explore solutions, plan features, or discuss your next project with an AI assistant that fits naturally into your workflow.\n\nCHAT YOUR WAY\n\nStart a conversation whenever you need help and continue it later. Keep important conversations pinned and easily find your previous chats with built-in search.\n\nPOWERFUL AI, YOUR WAY\n\nFriindzy supports custom Google AI Studio API keys, allowing you to bring your own keys and manage your AI access directly from the app. You can configure multiple keys for backup and flexibility.\n\nMORE THAN JUST CHAT\n\nFriindzy can help with much more than text conversations. Use available tools to create images, search the web, explore ideas, and get information for your projects.\n\nSMART & CONTEXT-AWARE\n\nKeep your conversations organized and continue from where you left off. Friindzy is designed to understand the context of your conversation so you can focus on what you're trying to accomplish.\n\nWHAT YOU CAN DO WITH FRIINDZY\n\n• Write and understand code\n• Debug programming problems\n• Generate ideas and project concepts\n• Plan app and software features\n• Learn programming concepts\n• Ask questions and get explanations\n• Search the web for information\n• Create images with AI\n• Continue previous conversations\n• Pin important chats\n• Quickly search your chat history\n• Use your own Google AI Studio API keys\n• Configure multiple API keys for flexibility\n\nMADE FOR BUILDERS\n\nFrom a small coding question to a complete app idea, Friindzy is built to be a helpful companion throughout your development journey.\n\nYour ideas. Your projects. Your AI friend.\n\nStart chatting with Friindzy.",
+      "version": "3.17",
+      "size": "10",
+      "category": "Productivity",
+      "package": "com.friindzy",
+      "icon": "assets\/images\/icons\/app_e7ed077c.png",
+      "featured": true,
+      "download_url": "",
+      "release_date": "2026-08-27",
+      "updated_date": "2026-08-27",
+      "min_android": "6.0",
+      "status": "coming_soon",
+      "admin_only": false,
+      "admin_password": "",
+      "features": [],
+      "screenshots": [
+        "assets\/images\/screenshots\/app_e7ed077c_1.png",
+        "assets\/images\/screenshots\/app_e7ed077c_2.png",
+        "assets\/images\/screenshots\/app_e7ed077c_3.png",
+        "assets\/images\/screenshots\/app_e7ed077c_4.png",
+        "assets\/images\/screenshots\/app_e7ed077c_5.png"
+      ]
     }
   ]
 }
