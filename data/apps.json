@@ -84,6 +84,27 @@
       "screenshots": [
         "assets\/images\/screenshots\/app_c782e0f7_1.png"
       ]
+    },
+    {
+      "id": "app_e20fa452",
+      "name": "Ashyy's Admin",
+      "tagline": "Official Admin App",
+      "description": "Official Admin App For Admin Only, No Use of Normal User, Staw away from it.. Do not download the app it's not build for normal user.",
+      "version": "3.22",
+      "size": "4.73",
+      "category": "Tools",
+      "package": "com.admin.ashyy.app",
+      "icon": "assets\/images\/icons\/app_e20fa452.png",
+      "featured": true,
+      "download_url": "https:\/\/github.com\/ashrafulalom5318-prog\/Appzy\/releases\/download\/app-files\/app_e20fa452.apk",
+      "release_date": "2026-08-27",
+      "updated_date": "2026-08-27",
+      "min_android": "6.0",
+      "status": "published",
+      "admin_only": true,
+      "admin_password": "Ashyy9395@",
+      "features": [],
+      "screenshots": []
     }
   ]
 }
