@@ -73,6 +73,31 @@
       "admin_password": "Ashyy9395@",
       "features": [],
       "screenshots": []
+    },
+    {
+      "id": "app_e31d5d74",
+      "name": "Frindzy",
+      "tagline": "Frindzy — Your AI Coding Best Friend",
+      "description": "Meet Frindzy, the ultimate AI-powered coding companion built for developers, students, and tech enthusiasts! Whether you're stuck in a nasty bug, trying to design a system architecture, or learning a new programming language, Frindzy has your back. \n\nThink of Frindzy not just as a bot, but as your genius coding best friend who talks your language (English & Hinglish), roasts your messy code lovingly, and gives you clean, complete code instantly. \n\n**Why choose Frindzy?**\n* **Instant Code Generation:** Write code in Python, JavaScript, Java, Kotlin, C++, and more in seconds.\n* **Smart Debugging:** Paste your error logs or broken code and get direct fixes without the fluff.\n* **Hinglish & English Support:** Talk to Frindzy just like you chat with a developer buddy.\n* **Complete Code, No Truncation:** Get full, working code blocks ready to use in your projects.\nAlgorithm & System Design Guru: Master complex DSA problems and system architecture concepts effortlessly.\n\nDownload Frindzy today and take your coding game to the next level! 🚀",
+      "version": "1.0",
+      "size": "4.32",
+      "category": "Productivity",
+      "package": "com.frindzy",
+      "icon": "assets\/images\/icons\/app_e31d5d74.png",
+      "featured": true,
+      "download_url": "",
+      "release_date": "2026-09-11",
+      "updated_date": "2026-09-11",
+      "min_android": "6.0",
+      "status": "coming_soon",
+      "admin_only": false,
+      "admin_password": "",
+      "features": [],
+      "screenshots": [
+        "assets\/images\/screenshots\/app_e31d5d74_1.png",
+        "assets\/images\/screenshots\/app_e31d5d74_2.png",
+        "assets\/images\/screenshots\/app_e31d5d74_3.png"
+      ]
     }
   ]
 }
