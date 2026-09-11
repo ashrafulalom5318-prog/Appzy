@@ -98,6 +98,27 @@
         "assets\/images\/screenshots\/app_e31d5d74_2.png",
         "assets\/images\/screenshots\/app_e31d5d74_3.png"
       ]
+    },
+    {
+      "id": "app_eb26f5c1",
+      "name": "Signed Apk",
+      "tagline": "Signed Your Apk",
+      "description": "This is the Tool for Signing an Apk!",
+      "version": "1.0",
+      "size": "5.86",
+      "category": "Tools",
+      "package": "com.apksigner",
+      "icon": "assets\/images\/icons\/app_eb26f5c1.png",
+      "featured": true,
+      "download_url": "",
+      "release_date": "2026-09-12",
+      "updated_date": "2026-09-12",
+      "min_android": "5.0",
+      "status": "coming_soon",
+      "admin_only": false,
+      "admin_password": "",
+      "features": [],
+      "screenshots": []
     }
   ]
 }
